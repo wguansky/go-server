@@ -1,0 +1,14 @@
+postgres:
+  host: "localhost"
+  port: 5432
+  user: "test"
+  password: "test"
+  dbname: "testdb"
+
+redis:
+  address: "localhost:6379"
+  password: ""
+  db: 0
+
+jwt_secret: "wguan123456"
+session_secret: "wguan123456"
