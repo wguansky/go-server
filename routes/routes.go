@@ -12,12 +12,23 @@ func RegisterRoutes(r *gin.Engine) {
 	r.POST("/login", handlers.LoginHandler)
 	r.GET("/logout", handlers.LogoutHandler)
 
-	auth := r.Group("/")
-	auth.Use(middleware.SessionMiddleware())
+	// 受会话保护的路由
+	sessionProtected := r.Group("/")
+	sessionProtected.Use(middleware.SessionMiddleware())
 	{
-		auth.GET("/hello", handlers.HelloHandler)
-		auth.GET("/db", handlers.DBHandler)
-		auth.GET("/redis", handlers.RedisHandler)
-		auth.GET("/protected", handlers.ProtectedHandler)
+		sessionProtected.GET("/session/hello", handlers.HelloHandler)
+		sessionProtected.GET("/session/db", handlers.DBHandler)
+		sessionProtected.GET("/session/redis", handlers.RedisHandler)
+		sessionProtected.GET("/session/protected", handlers.ProtectedHandler)
+	}
+
+	// 受 JWT 保护的路由
+	jwtProtected := r.Group("/")
+	jwtProtected.Use(middleware.JWTAuthMiddleware())
+	{
+		jwtProtected.GET("/jwt/hello", handlers.HelloHandler)
+		jwtProtected.GET("/jwt/db", handlers.DBHandler)
+		jwtProtected.GET("/jwt/redis", handlers.RedisHandler)
+		jwtProtected.GET("/jwt/protected", handlers.ProtectedHandler)
 	}
 }
