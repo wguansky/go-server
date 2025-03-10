@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"time"
 	"workflow/configs"
@@ -59,7 +60,12 @@ func LoginHandler(c *gin.Context) {
 		session := sessions.Default(c)
 		session.Set("user_id", user.ID)
 		session.Set("username", user.Username)
-		session.Save()
+		err = session.Save()
+		if err != nil {
+			log.Println(err)
+			c.JSON(500, gin.H{"error": "Failed to save session"})
+			return
+		}
 
 		c.JSON(http.StatusOK, gin.H{"token": token})
 		return
