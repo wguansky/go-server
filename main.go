@@ -1,12 +1,12 @@
 package main
 
 import (
-	"workflow/middleware"
-	"workflow/routes"
+	"rest-api/middleware"
+	"rest-api/routes"
 
 	"github.com/gin-gonic/gin"
 
-	"workflow/configs"
+	"rest-api/configs"
 )
 
 func main() {

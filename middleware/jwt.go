@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"net/http"
+	"rest-api/utils"
 	"strings"
-	"workflow/utils"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,8 +1,8 @@
 package utils
 
 import (
+	"rest-api/configs"
 	"time"
-	"workflow/configs"
 
 	"github.com/dgrijalva/jwt-go"
 )

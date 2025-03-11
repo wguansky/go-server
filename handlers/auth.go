@@ -4,10 +4,10 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"rest-api/configs"
+	"rest-api/models"
+	"rest-api/utils"
 	"time"
-	"workflow/configs"
-	"workflow/models"
-	"workflow/utils"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"

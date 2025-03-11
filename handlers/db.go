@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"net/http"
-	"workflow/configs"
+	"rest-api/configs"
 
 	"github.com/gin-gonic/gin"
 )

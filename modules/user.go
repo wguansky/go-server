@@ -1,7 +1,3 @@
-// @Title
-// @Description
-// @Author
-// @Update
 package models
 
 import (
@@ -17,7 +13,15 @@ type User struct {
 }
 
 func CreateUser(username, password string) error {
-	_, err := configs.DB.Exec("INSERT INTO users (username, password) VALUES ($1, $2)", username, password)
+	user, err := GetUserByUsername(username)
+	if err != nil {
+		return err
+	}
+	if user == nil {
+		return errors.New(`The user exist, please use another username!`)
+	}
+
+	_, err = configs.DB.Exec("INSERT INTO users (username, password) VALUES ($1, $2)", username, password)
 	return err
 }
 

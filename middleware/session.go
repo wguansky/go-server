@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"workflow/configs"
+	"rest-api/configs"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/postgres"

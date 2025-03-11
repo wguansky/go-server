@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"workflow/handlers"
-	"workflow/middleware"
+	"rest-api/handlers"
+	"rest-api/middleware"
 
 	"github.com/gin-gonic/gin"
 )
